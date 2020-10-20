@@ -106,6 +106,28 @@
     // 6. Creates a list of boulevards in Paris that contain 'de' in their name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    // First we check how to get the DOM elements of this page:
+    // const category = document.querySelector('.mw-category');
+
+    // querySelector can be called on a const too , but it returns a NodeList, not an array!
+    // const links = category.querySelectorAll('a');
+
+    // NodeList methods don't have 'map' function, so we have to convert this into an array
+    // 1st method: wrap it in 'Array.from()'
+    // const links = Array.from(category.querySelectorAll('a')); 
+
+    // 2nd method: create an array [] and use 'spread (...)' in it
+    // Spread: takes every item out of sg iterable and 'spreads' (puts) them into an array
+    // const links = [...category.querySelectorAll('a')]; 
+
+    // So in the end:
+    const category = document.querySelector('.mw-category');
+    const links = Array.from(category.querySelectorAll('a'));
+    const de = links
+      .map(link => link.textContent)
+      .filter(streetName => streetName.includes('de'));
+    // Then running "de" in the console returns the matching bld-s  
+
 
     // 7. Sorts the people alphabetically by last name
 
