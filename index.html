@@ -26,7 +26,22 @@
       { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
     ];
 
-    const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+    const people = [
+      'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle',
+      'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul',
+      'Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel',
+      'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David',
+      'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester',
+      'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd',
+      'Berle, Milton', 'Berlin, Irving', 'Berne, Eric',
+      'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano',
+      'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin',
+      'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose',
+      'Blair, Tony', 'Blake, William', 'Beethoven, Ludwig',
+      'Biko, Steve', 'Billings, Josh', 'Biondo, Frank',
+      'Birrell, Augustine', 'Black, Elk', 'Blair, Robert',
+      'Beddoes, Mick', 'Beecher, Henry'
+    ];
 
     // Array.prototype.filter()
     // 1. Filters the list of inventors for those who were born in the 1500's
@@ -121,17 +136,32 @@
     // const links = [...category.querySelectorAll('a')]; 
 
     // So in the end:
-    const category = document.querySelector('.mw-category');
-    const links = Array.from(category.querySelectorAll('a'));
-    const de = links
-      .map(link => link.textContent)
-      .filter(streetName => streetName.includes('de'));
-    // Then running "de" in the console returns the matching bld-s  
+    // This needs to be run in the console on the wiki page!
+
+    /* 
+        const category = document.querySelector('.mw-category');
+        const links = Array.from(category.querySelectorAll('a'));
+        const de = links
+          .map(link => link.textContent)
+          .filter(streetName => streetName.includes('de'));
+     */
+
+    // Then running "de" returns the matching bld-s  
 
 
     // 7. Sorts the people alphabetically by last name
+    const alpha = people.sort((lastOne, nextOne) => {
+      //  const parts = lastOne.split(', ');
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      return aLast > bLast ? 1 : -1;
+    });
+    // If we wanted to return an array, we could use reduce()
+
+    console.log(alpha);
 
     // 8. Sums up the instances of each item
+    // Using reduce()
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 
   </script>
