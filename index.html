@@ -46,7 +46,7 @@
     console.table(fifteen); // Returns a table in the console
 
     // Array.prototype.map()
-    // Takes an array, does something with it, return a new array but with the same length
+    // Takes an array, does something with it, returns a new array but with the same length
     // 2. Returns an array of the inventors' first and last names
     // Using the `` with template literals allows us to put a space in the name,
     // without having to use inventor.first + ' ' + inventor.last
@@ -77,13 +77,6 @@
     // A cleaner way than a for loop
     // 4. Returns the sum of years the inventors have lived
 
-    /*     var totalYears = 0;
-    
-        for (var i = 0; i < inventors.length; i++) {
-          totalYears += inventors[i].year;
-    
-        } */
-
     const totalYears = inventors.reduce((total, inventor) => {
       return total + (inventor.passed - inventor.year)
     }, 0);
@@ -91,6 +84,24 @@
     console.log(totalYears);
 
     // 5. Sorts the inventors by the number of years they lived
+
+    /* const oldest = inventors.sort(function (a, b) {
+      const lastPerson = a.passed - a.year;
+      const nextPerson = b.passed - b.year;
+      if (lastPerson > nextPerson) {
+        return -1;
+      } else {
+        return 1;
+      }
+    }); */
+
+    const oldest = inventors.sort(function (a, b) {
+      const lastPerson = a.passed - a.year;
+      const nextPerson = b.passed - b.year;
+      return lastPerson > nextPerson ? -1 : 1
+    });
+
+    console.table(oldest);
 
     // 6. Creates a list of boulevards in Paris that contain 'de' in their name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
