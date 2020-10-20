@@ -74,7 +74,21 @@
     console.table(ordered);
 
     // Array.prototype.reduce()
+    // A cleaner way than a for loop
     // 4. Returns the sum of years the inventors have lived
+
+    /*     var totalYears = 0;
+    
+        for (var i = 0; i < inventors.length; i++) {
+          totalYears += inventors[i].year;
+    
+        } */
+
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year)
+    }, 0);
+
+    console.log(totalYears);
 
     // 5. Sorts the inventors by the number of years they lived
 
