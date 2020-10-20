@@ -162,7 +162,24 @@
 
     // 8. Sums up the instances of each item
     // Using reduce()
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+    const data = [
+      'car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van',
+      'bike', 'walk', 'car', 'van', 'car', 'truck', 'tram', 'train', 'bus',
+      'plane', 'tram', 'bus', 'train', 'plane', 'plane', 'taxi', 'car',
+      'truck', 'taxi', 'teleport'
+    ];
+
+    // We start with an empty object {}
+    // Then we start looping over it to check IF there is any item in there (technically a 0)
+    const transportation = data.reduce(function (obj, item) {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {})
+
+    console.log(transportation);
 
   </script>
 </body>
