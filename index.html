@@ -46,7 +46,12 @@
     console.table(fifteen); // Returns a table in the console
 
     // Array.prototype.map()
+    // Takes an array, does something with it, return a new array but with the same length
     // 2. Returns an array of the inventors' first and last names
+    // Using the `` with template literals allows us to put a space in the name,
+    // without having to use inventor.first + ' ' + inventor.last
+    const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    console.log(fullNames);
 
     // Array.prototype.sort()
     // 3. Sorts the inventors by birthdate, oldest to youngest
